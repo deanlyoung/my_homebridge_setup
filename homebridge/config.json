@@ -20,6 +20,7 @@
 			"excludeSensorTypes": ["Daylight","CLIPGenericStatus","CLIPGenericFlag","ZGPSwitch","Geofence"],
 			"lowBattery": 25,
 			"lights": true,
+			"linkButton": false,
 			"philipsLights": true,
 			"ct": false,
 			"groups": true,
@@ -32,7 +33,8 @@
 			"timeout": 20,
 			"parallelRequests": 3,
 			"waitTimeResend": 300,
-			"waitTimeSwitch":100
+			"waitTimeSwitch": 100,
+			"waitTimeUpdate": 75
 		},{
 			"platform": "cmdSwitch2",
 			"switches": [
