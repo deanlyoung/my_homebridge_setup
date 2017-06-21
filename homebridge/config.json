@@ -65,6 +65,21 @@
 					"interval": 30,
 					"manufacturer": "Denon / Panasonic",
 					"model": "AVR-3803 / PT-AX200U"
+				},{
+					"name": "Mute TV",
+					"on_cmd": "python /home/pi/Scripts/mute-tv.py",
+					"off_cmd": "python /home/pi/Scripts/mute-tv.py",
+					"manufacturer": "Denon",
+					"model": "AVR-3803"
+				},{
+					"name": "Bedroom Fan 3",
+					"on_cmd": "python /home/pi/Scripts/fan-power-three-on.py",
+					"off_cmd": "python /home/pi/Scripts/fan-power-three-off.py",
+					"state_cmd": "curl -s 'http://XX.X.X.X/api/XXXXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXXXXXXXX/sensors/44' | python -c \"import sys, json; print(json.load(sys.stdin)['state']['flag'])\" | grep -i 'True'",
+					"polling": true,
+					"interval": 30,
+					"manufacturer": "Honeywell",
+					"model": "HY-048BP"
 				}
 			]
 		},{
