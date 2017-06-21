@@ -3,7 +3,7 @@ import time
 import requests, json
 import subprocess
 
-def FanPowerThree():
+def fanPowerThree():
 	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c FanPower", shell=True)
 	time.sleep(0.1)
 
