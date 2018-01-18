@@ -4,8 +4,8 @@ import requests, json
 import subprocess
 
 def projector():
-	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c Projector", shell=True)
-	time.sleep(0.5)
+	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c Projector -d LivingRoom", shell=True)
+	time.sleep(0.1)
 
 def hue():
 	payload = json.dumps({"state":{"flag":True}})

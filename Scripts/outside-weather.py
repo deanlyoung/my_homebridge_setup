@@ -3,22 +3,22 @@ import requests
 
 baseUrl = 'https://maker.ifttt.com/trigger/'
 iftttKey = 'XXX'
-
-openWeatherMapKey = 'XXX'
-cityZip = 'XXXXX,US'
-openWeatherMapUrl = 'http://api.openweathermap.org/data/2.5/weather?zip='
-
 event = 'outside'
+
+lat = 'XXX'
+lon = 'XXX'
+wundergroundApiKey = 'XXX'
+wundergroundUrl = 'http://api.wunderground.com/api/'
 
 def setup():
 	print '\n Begin outside weather program...'
 
 def outsideWeather():
-	weatherUrl = openWeatherMapUrl + cityZip + '&appid=' + openWeatherMapKey
+	weatherUrl = wundergroundUrl + wundergroundApiKey + '/conditions/q/' + lat + ',' + lon + '.json'
 	try:
-		outsideTempData = requests.get(weatherUrl).json()
-		outsideTemp = outsideTempData['main']['temp']
-		fahrenheit = outsideTemp * 1.8 - 459.67
+		outsideData = requests.get(weatherUrl).json()
+		outsideTemp = outsideData['current_observation']['temp_c']
+		fahrenheit = outsideTemp * 1.8 + 32
 		outside_weather_maker_url = baseUrl + event + '/with/key/' + iftttKey
 		outside_weather_payload = {}
 		outside_weather_payload['value1'] = '{0:0.2f}'.format(fahrenheit)

@@ -4,11 +4,11 @@ import requests, json
 import subprocess
 
 def projector():
-	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c Projector", shell=True)
+	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c Projector -d LivingRoom", shell=True)
 	time.sleep(0.5)
 
 def receiver():
-	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c ReceiverOff", shell=True)
+	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c ReceiverOff -d LivingRoom", shell=True)
 	time.sleep(0.1)
 
 def hue():

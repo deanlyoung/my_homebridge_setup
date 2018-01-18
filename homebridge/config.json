@@ -28,6 +28,7 @@
 			"rooms": false,
 			"schedules": false,
 			"rules": false,
+			"resource": true,
 			"heartrate": 5,
 			"waitTimeUpdate": 50,
 			"timeout": 20,
@@ -69,6 +70,9 @@
 					"name": "Mute TV",
 					"on_cmd": "python /home/pi/Scripts/mute-tv.py",
 					"off_cmd": "python /home/pi/Scripts/mute-tv.py",
+					"state_cmd": "curl -s 'http://XX.X.X.X/api/XXXXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXXXXXXXX/sensors/48' | python -c \"import sys, json; print(json.load(sys.stdin)['state']['flag'])\" | grep -i 'True'",
+					"polling": true,
+					"interval": 30,
 					"manufacturer": "Denon",
 					"model": "AVR-3803"
 				},{
@@ -91,12 +95,12 @@
 					"name": "Dean",
 					"target": "XX.X.X.XXX",
 					"threshold": 15,
-					"ignoreReEnterExitSeconds": 120
+					"ignoreReEnterExitSeconds": 60
 				},{
 					"name": "Suzy",
 					"target": "XX.X.X.XXX",
 					"threshold": 15,
-					"ignoreReEnterExitSeconds": 120
+					"ignoreReEnterExitSeconds": 60
 				}
 			]
 		},{
@@ -122,6 +126,14 @@
 							"caption": "Xxxx Trigger",
 							"triggerOn": "XxxxTriggerOn",
 							"triggerOff": "XxxxTriggerOff"
+						}
+					]
+				},{
+					"name": "Color Loop",
+					"buttons": [
+						{
+							"caption": "Color Loop",
+							"triggerOn": "color_loop"
 						}
 					]
 				}

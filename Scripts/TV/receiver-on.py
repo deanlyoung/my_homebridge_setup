@@ -4,7 +4,7 @@ import requests, json
 import subprocess
 
 def receiver():
-	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c ReceiverOn", shell=True)
+	subprocess.Popen("python /home/pi/Downloads/BlackBeanControl/BlackBeanControl.py -c ReceiverOn -d LivingRoom", shell=True)
 	time.sleep(0.1)
 
 def hue():
