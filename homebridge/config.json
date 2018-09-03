@@ -1,0 +1,143 @@
+{
+	"bridge": {
+		"name": "Homebridge",
+		"username": "XX:XX:XX:XX:XX:XX",
+		"port": XXXXX,
+		"pin": "XXX-XX-XXX"
+	},
+
+	"description": "XXXX XXXX platforms and accessories.",
+
+	"platforms": [
+		{
+			"platform": "Hue",
+			"name": "Hue",
+			"host": "XX.X.X.X",
+			"users": {
+				"XXXXXXXXXXXXXXXX": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+			},
+			"sensors": true,
+			"excludeSensorTypes": ["Daylight","CLIPGenericStatus","CLIPGenericFlag","ZGPSwitch","Geofence"],
+			"lowBattery": 25,
+			"lights": true,
+			"linkButton": false,
+			"philipsLights": true,
+			"ct": false,
+			"groups": true,
+			"group0": false,
+			"rooms": false,
+			"schedules": false,
+			"rules": false,
+			"resource": true,
+			"heartrate": 5,
+			"waitTimeUpdate": 50,
+			"timeout": 20,
+			"parallelRequests": 3,
+			"waitTimeResend": 300,
+			"waitTimeSwitch": 100,
+			"waitTimeUpdate": 75
+		},{
+			"platform": "cmdSwitch2",
+			"switches": [
+				{
+					"name": "Receiver",
+					"on_cmd": "python /home/pi/Scripts/receiver-on.py",
+					"off_cmd": "python /home/pi/Scripts/receiver-off.py",
+					"state_cmd": "curl -s 'http://XX.X.X.X/api/XXXXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXXXXXXXX/sensors/35' | python -c \"import sys, json; print(json.load(sys.stdin)['state']['flag'])\" | grep -i 'True'",
+					"polling": true,
+					"interval": 30,
+					"manufacturer": "Denon",
+					"model": "AVR-3803"
+				},{
+					"name": "Projector",
+					"on_cmd": "python /home/pi/Scripts/projector-on.py",
+					"off_cmd": "python /home/pi/Scripts/projector-off.py",
+					"state_cmd": "curl -s 'http://XX.X.X.X/api/XXXXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXXXXXXXX/sensors/36' | python -c \"import sys, json; print(json.load(sys.stdin)['state']['flag'])\" | grep -i 'True'",
+					"polling": true,
+					"interval": 30,
+					"manufacturer": "Panasonic",
+					"model": "PT-AX200U"
+				},{
+					"name": "TV",
+					"on_cmd": "python /home/pi/Scripts/tv-on.py",
+					"off_cmd": "python /home/pi/Scripts/tv-off.py",
+					"state_cmd": "curl -s 'http://XX.X.X.X/api/XXXXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXXXXXXXX/sensors/37' | python -c \"import sys, json; print(json.load(sys.stdin)['state']['flag'])\" | grep -i 'True'",
+					"polling": true,
+					"interval": 30,
+					"manufacturer": "Denon / Panasonic",
+					"model": "AVR-3803 / PT-AX200U"
+				},{
+					"name": "Mute TV",
+					"on_cmd": "python /home/pi/Scripts/mute-tv.py",
+					"off_cmd": "python /home/pi/Scripts/mute-tv.py",
+					"state_cmd": "curl -s 'http://XX.X.X.X/api/XXXXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXXXXXXXX/sensors/48' | python -c \"import sys, json; print(json.load(sys.stdin)['state']['flag'])\" | grep -i 'True'",
+					"polling": true,
+					"interval": 30,
+					"manufacturer": "Denon",
+					"model": "AVR-3803"
+				},{
+					"name": "Bedroom Fan 3",
+					"on_cmd": "python /home/pi/Scripts/fan-power-three-on.py",
+					"off_cmd": "python /home/pi/Scripts/fan-power-three-off.py",
+					"state_cmd": "curl -s 'http://XX.X.X.X/api/XXXXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXXXXXXXX/sensors/44' | python -c \"import sys, json; print(json.load(sys.stdin)['state']['flag'])\" | grep -i 'True'",
+					"polling": true,
+					"interval": 30,
+					"manufacturer": "Honeywell",
+					"model": "HY-048BP"
+				}
+			]
+		},{
+			"platform": "People",
+			"anyoneSensor": true,
+			"nooneSensor": true,
+			"people": [
+				{
+					"name": "Dean",
+					"target": "XX.X.X.XXX",
+					"threshold": 15,
+					"ignoreReEnterExitSeconds": 60
+				},{
+					"name": "Suzy",
+					"target": "XX.X.X.XXX",
+					"threshold": 15,
+					"ignoreReEnterExitSeconds": 60
+				}
+			]
+		},{
+			"platform": "IFTTT",
+			"name": "IFTTT",
+			"makerkey": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+			"accessories": [
+				{
+					"name": "IFTTT",
+					"buttons": [
+						{
+							"caption": "Trigger",
+							"triggerOn": "TriggerOn",
+							"triggerOff": "TriggerOff"
+						},
+						{
+							"caption": "Xxxx Trigger",
+							"triggerOn": "XxxxTriggerOn",
+							"triggerOff": "XxxxTriggerOff"
+						},
+						{
+							
+							"caption": "Xxxx Trigger",
+							"triggerOn": "XxxxTriggerOn",
+							"triggerOff": "XxxxTriggerOff"
+						}
+					]
+				},{
+					"name": "Color Loop",
+					"buttons": [
+						{
+							"caption": "Color Loop",
+							"triggerOn": "color_loop"
+						}
+					]
+				}
+			]
+		}
+	]
+}
